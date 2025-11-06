@@ -27,6 +27,18 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", message: "Business Consultancy API is running" });
 });
 
+// status endpoint for quick verification
+app.get("/api/status", (_req, res) => {
+  res.json({
+    status: "ok",
+    uptime: process.uptime(),
+    frontendOrigin: process.env.FRONTEND_ORIGIN || null,
+    hasOpenAIKey: Boolean(process.env.OPENAI_API_KEY),
+    healthcheckWebhookSet: Boolean(process.env.HEALTHCHECK_WEBHOOK_URL),
+    visionWebhookSet: Boolean(process.env.VISION_WEBHOOK_URL)
+  });
+});
+
 // save Health Check ratings (stub for Google Sheets integration)
 app.post("/api/healthcheck", async (req, res) => {
   try {
@@ -339,6 +351,7 @@ app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
   console.log("Routes:");
   console.log("GET    /api/health");
+  console.log("GET    /api/status");
   console.log("POST   /api/healthcheck");
   console.log("POST   /api/vision");
   console.log("POST   /api/generate-plan");

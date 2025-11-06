@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Brain, Download, MessageCircle } from 'lucide-react';
 import HealthCheck from './HealthCheck';
-import VisionForm from './VisionFormClean';
+import VisionForm from './VisionForm';
 
 const BusinessConsultancyApp = () => {
   const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3002';
