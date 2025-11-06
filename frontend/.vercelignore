@@ -1,0 +1,7 @@
+backend/
+docs/
+**/node_modules/
+**/.env*
+README.md
+.github/
+
